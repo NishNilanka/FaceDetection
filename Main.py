@@ -18,7 +18,7 @@ import cv2
 # facial landmark predictor
 print("[INFO] loading facial landmark predictor...")
 detector = dlib.get_frontal_face_detector()
-predictor = dlib.shape_predictor("shape_predictor_68_face_landmarks.dat")
+predictor = dlib.shape_predictor("shape_predictor_5_face_landmarks.dat")
 # initialize the video stream and sleep for a bit, allowing the
 # camera sensor to warm up
 print("[INFO] camera sensor warming up...")
@@ -65,6 +65,10 @@ while vs.more():
         # and draw each of them
         for (i, (x, y)) in enumerate(shape):
             #if (i == 37 or i == 38 or i == 40 or i == 41 or i == 43 or i == 44 or i == 47 or i == 46):
+            if (i == 3):
+                print("Location of 3: "+ str(x) + "," +str(y))
+            if (i == 1):
+                print("Location of 1: " + str(x) + "," + str(y))
             cv2.circle(frame, (x, y), 1, (0, 0, 255), -1)
             cv2.putText(frame, str(i + 1), (x - 10, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.35, (0, 0, 255), 1)
 
